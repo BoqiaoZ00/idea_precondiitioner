@@ -13,8 +13,8 @@ function [K, Q1, Q2, A, B, C] = construct_K(n0, m0, p0)
         end
     
         % Generate random matrices B, C
-        B = randn(m, n);
-        C = randn(p, m);
+        B = generate_random_matrix_between_1_and_100(m, n);
+        C = generate_random_matrix_between_1_and_100(p, m);
         
         % Ensure Q1 = BA^(-1)B^T is invertible
         Q1 = B / A * B'; 

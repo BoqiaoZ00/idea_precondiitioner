@@ -1,5 +1,5 @@
     % Number of iterations
-    num_iterations = 10;
+    num_iterations = 100;
     well_cond_iterations = 0;
 
     % Tolerance for comparison
@@ -10,10 +10,10 @@
      % test multiple times
     for i = 1:num_iterations
         % Random dimensions for n, m, p
-        n = randi([2,3]); % Random n between 2 and 5
-        m = randi([2, 3]); % Random m between 2 and 5
-        p = randi([2, 3]); % Random p between 2 and 5
-       %  n = 4; m = 2; p = 1;
+        n = randi([2,30]); % Random n
+        m = randi([2, 30]); % Random m
+        p = randi([2, 30]); % Random p
+        % n = 4; m = 2; p = 1;
 
 
         [K, Q1, Q2, A, B, C] = construct_K(n, m, p);
