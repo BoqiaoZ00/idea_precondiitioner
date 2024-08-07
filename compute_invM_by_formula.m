@@ -1,4 +1,4 @@
-function M = compute_invM_by_formula(A, B, C, Q1, Q2)
+function invM = compute_invM_by_formula(A, B, C, Q1, Q2)
 
     [m, n] = size(B);
     [p, ~] = size(C);
@@ -10,21 +10,21 @@ function M = compute_invM_by_formula(A, B, C, Q1, Q2)
    S1 = -Q12 + B / A0 * B';
    S2 = -Q2 + C0 / M0 * C0';
 
-   M11 = -(A0^(-1)*B'/Q1*C'/S2*C/Q1*B-A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2*C/Q1*B)*(A0^(-1)-A0^(-1)*B'/S1*B/A0)+(A0^(-1)-A0^(-1)*B'/S1*B/A0);
-   M12 = -(A0^(-1)*B'/Q1*C'/S2*C/Q1*B-A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2*C/Q1*B)/A0*B'/S1 + A0^(-1)*B'/S1;
-   M21 = -S1^(-1)*B/A0*B'/Q1*C'/S2*C/Q1*B*(A0^(-1)-A0^(-1)*B'/S1*B/A0) + S1^(-1)*B/A0;
-   M22 = -S1^(-1)*B/A0*B'/Q1*C'/S2*C/Q1*B/A0*B'/S1 - S1^(-1);
+   invM11 = -(A0^(-1)*B'/Q1*C'/S2*C/Q1*B-A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2*C/Q1*B)*(A0^(-1)-A0^(-1)*B'/S1*B/A0)+(A0^(-1)-A0^(-1)*B'/S1*B/A0);
+   invM12 = -(A0^(-1)*B'/Q1*C'/S2*C/Q1*B-A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2*C/Q1*B)/A0*B'/S1 + A0^(-1)*B'/S1;
+   invM21 = -S1^(-1)*B/A0*B'/Q1*C'/S2*C/Q1*B*(A0^(-1)-A0^(-1)*B'/S1*B/A0) + S1^(-1)*B/A0;
+   invM22 = -S1^(-1)*B/A0*B'/Q1*C'/S2*C/Q1*B/A0*B'/S1 - S1^(-1);
 
-   M13 = A0^(-1)*B'/Q1*C'/S2 - A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2;
-   M23 = (S1^(-1)*B/A0*B'/Q1*C'/S2);
+   invM13 = A0^(-1)*B'/Q1*C'/S2 - A0^(-1)*B'/S1*B/A0*B'/Q1*C'/S2;
+   invM23 = (S1^(-1)*B/A0*B'/Q1*C'/S2);
 
-   M31 = S2^(-1)*C/Q1*B/A0 - S2^(-1)*C/Q1*B/A0*B'/S1*B/A0;
-   M32 = S2^(-1)*C/Q1*B/A0*B'/S1;
+   invM31 = S2^(-1)*C/Q1*B/A0 - S2^(-1)*C/Q1*B/A0*B'/S1*B/A0;
+   invM32 = S2^(-1)*C/Q1*B/A0*B'/S1;
 
-   M33 = -S2^(-1);
+   invM33 = -S2^(-1);
 
     % Get M
-   M = [M11, M12, M13; 
-       M21, M22, M23;
-       M31, M32, M33];
+   invM = [invM11, invM12, invM13; 
+       invM21, invM22, invM23;
+       invM31, invM32, invM33];
 end
